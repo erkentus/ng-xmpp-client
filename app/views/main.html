@@ -1,0 +1,87 @@
+<nav>
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a href="#" class="brand-logo">XMPP Chat</a>
+            <ul id="nav-mobile" class="right side-nav">
+                <li><a href="/">Chat</a>
+                </li>
+                <li><a href="#/about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class='connect_form' ng-hide='chat.state!="offline"'>
+    <div class="row">
+        <form class="col s12" name="connectForm">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" ng-model="form.username" type="text" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" ng-model="form.password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" ng-model="form.email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light" ng-click="authenticate()" type="submit" name="action">Submit
+                        <i class="mdi-content-send right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class='chat' ng-hide='chat.state!="online"'>
+    <div class='messages'>
+        <h4>Inbox</h4>
+        <ul class='receivedMessages collection'>
+            <li class='collection-item' ng-repeat='message in receivedMessages'>
+                <span class='message-author'>{{message.from}}</span>{{message.text}}
+        </ul>
+    </div>
+    <div class='compose_message'>
+        <h4>Outbox</h4>
+        <ul class='sentMessages collection'>
+            <li class='collection-item' ng-repeat='message in sentMessages'>
+                <span class='message-author'>{{message.to}}</span>{{message.text}}
+        </ul>
+        <h4>Send Message</h4>
+        <form name='messageForm'>
+            <div class="row">
+                <div class="select-field col s12">
+                    <!--                     <input id="recepient" ng-model="message.recepient" type="text" class="validate">
+                    <label for="recepient">To</label> -->
+                    <label>Recepient</label>
+                    <select class="browser-default" ng-model='message.recepient'>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option ng-repeat='contact in contacts' value="{{contact.jid}}">{{contact.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="text" ng-model="message.text" type="text" class="validate">
+                    <label for="text">Message</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light" ng-click="sendMessage()" type="submit" name="action">Send
+                        <i class="mdi-content-send right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

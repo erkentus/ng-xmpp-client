@@ -1,0 +1,9 @@
+{
+    "ip": "10.199.0.186",
+    "serverName": "yerkens-macbook-pro.local",
+    "localIP": "127.0.0.1",
+    "boshUrl": "http://yerkens-macbook-pro.local:7070/http-bind/",
+    "users": [
+
+    ]
+}
