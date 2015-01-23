@@ -7,4 +7,4 @@ AngularJS, Strophe based browser client with simple interface
 Postponed till better times :) 
 
 #Remark
-As of Friday 23th, the whole code in the repo was written from the scratch within two days, Friday, 22th, 23th Jan 2015. Hence apologies for anyone, in particular and mainly future me, who will be reading this code. 
+As of Friday 23th, the whole code in the repo was written from the scratch within two days, 22th, 23th Jan 2015. Hence apologies for anyone, in particular and mainly future me, who will be reading this code. 
