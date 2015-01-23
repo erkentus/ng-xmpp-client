@@ -1,0 +1,9 @@
+<div id='contact-list'>
+    <h4>Contacts</h4>
+    <ul class="collection">
+        <li class="collection-item contact-item" ng-click='onContactSelected(contact)' ng-class="{'notify': contact.newMessages}" ng-repeat='contact in contacts'>
+            <div>{{contact.name}}<a href="" class="secondary-content"><i class="secondary-content online mdi-action-face-unlock"></i></a>
+            </div>
+        </li>
+    </ul>
+</div>

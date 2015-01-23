@@ -11,7 +11,7 @@
         </div>
     </div>
 </nav>
-<div class='connect_form' ng-hide='chat.state!="offline"'>
+<div class='connect_form' ng-hide='chat.online'>
     <div class="row">
         <form class="col s12" name="connectForm">
             <div class="row">
@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <button class="btn waves-effect waves-light" ng-click="authenticate()" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light" ng-click="login(form.username, form.password, form.email)" type="submit" name="action">Submit
                         <i class="mdi-content-send right"></i>
                     </button>
                 </div>
@@ -42,15 +42,9 @@
         </form>
     </div>
 </div>
-<div class='chat' ng-hide='chat.state!="online"'>
-    <div class='messages'>
-        <h4>Inbox</h4>
-        <ul class='receivedMessages collection'>
-            <li class='collection-item' ng-repeat='message in receivedMessages'>
-                <span class='message-author'>{{message.from}}</span>{{message.text}}
-        </ul>
-    </div>
-    <div class='compose_message'>
+<div class='chat row' ng-hide='!chat.online'>
+    <contact-list></contact-list>
+    <div class='compose_message' ng-hide='selectedContact'>
         <h4>Outbox</h4>
         <ul class='sentMessages collection'>
             <li class='collection-item' ng-repeat='message in sentMessages'>
@@ -84,4 +78,30 @@
             </div>
         </form>
     </div>
+    <dialog-box ng-hide='!selectedContact'></dialog-box>
+    <div class="collection" id='settings-links'>
+        <a class='collection-item' href=''>{{myJid}}</a>
+        <a class="waves-effect waves-light collection-item btn modal-trigger" href='' ng-click='openAddContactModal()'>Add Contact</a>
+    </div>
+</div>
+<!-- Modal Trigger -->
+
+<!-- Modal Structure -->
+<div id="add-contact-modal" class="modal">
+    <h5>Add Contact</h5>
+    <form name='newContactForm'>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="newContact" ng-model="newContact" type="text" class="validate">
+                <label for="text">JID</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" ng-click="addContact()" type="submit" name="action">Add
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
